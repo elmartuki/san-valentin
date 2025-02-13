@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ti 💖</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #fdfd96;
+            color: white;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+        }
+        img {
+            width: 90%;
+            max-width: 300px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 18px;
+            border: none;
+            background: crimson;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        .falling {
+            position: absolute;
+            font-size: 30px;
+            top: -50px;
+            opacity: 0.9;
+            animation: fall 2.5s linear forwards;
+        }
+        @keyframes fall {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+        .message {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: black;
+        }
+        .love-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .love-container img {
+            max-width: 250px;
+        }
+        .love-message {
+            font-size: 20px;
+            margin-top: 10px;
+            color: pink;
+        }
+
+        .p{
+            color: black !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="paso1">
+        <img src="funny-dog-bright-beautiful-red-260nw-215714149.png" alt="Imagen especial">
+        <p class="message">Hice esta pagina solamente para decirte que te amo con todo mi corazon <3</p>
+        <button onclick="showStep2()">Siguiente</button>
+    </div>
+
+    <div id="paso2" class="hidden">
+        <p class="message">Aceptarias estar conmigo en las buenas y en las malas hasta que la muerte nos separe?</p>
+        <button onclick="showLove()">Sipi 💕</button>
+        <button>No</button>
+    </div>
+
+    <div id="love-message" class="hidden love-container">
+        <img src="Perritos Disfrazados.jpg" alt="Perritos abrazados">
+        <p class="love-message">❤️Feliz 19 meses juntitos❤️</p>
+        <br>
+        <p style="color: black;">Perdón por decírtelo tan tarde, pero no importa que sea tan dificil lo que pase, pero yo estare ahí esperandote porque te amo, y me haces mucha falta asi que perdoname por cuestionarte y decirte que si queriamos terminar, solo estoy nervioso y tengo miedo por perderte.</p>
+    </div>
+
+    <script>
+        function showStep2() {
+            document.getElementById("paso1").classList.add("hidden");
+            document.getElementById("paso2").classList.remove("hidden");
+        }
+
+        function showLove() {
+            document.getElementById("paso2").classList.add("hidden");
+            document.getElementById("love-message").classList.remove("hidden");
+
+            // Animación de corazones y estrellas
+            for (let i = 0; i < 10; i++) {
+                createFallingElement('❤️');
+                createFallingElement('✨');
+            }
+        }
+
+        function createFallingElement(symbol) {
+            const element = document.createElement('div');
+            element.classList.add('falling');
+            element.innerHTML = symbol;
+            element.style.left = Math.random() * 100 + 'vw';
+            element.style.animationDuration = (Math.random() * 1 + 1.5) + 's';
+            document.body.appendChild(element);
+
+            setTimeout(() => {
+                element.remove();
+            }, 3000);
+        }
+    </script>
+
+</body>
+</html>

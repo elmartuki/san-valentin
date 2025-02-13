@@ -1,0 +1,61 @@
+*{
+    margin: 0px;
+}
+
+.fondo{
+    width: 100%;
+    height: 100vh;
+    background-color: #fdfd96
+}
+
+.contenedor{
+    width: 60%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tex1{
+    font-size: 15px;
+}
+.tex2{
+    font-size: 15px;
+}
+
+.btn-1{
+    width: 100px;
+    border: 2px solid red;
+    background-color: transparent;
+    height: 30px;
+    margin-right: 5%;
+    transition: 1s;
+    cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+    }
+
+.falling {
+            position: absolute;
+            font-size: 30px;
+            top: -50px;
+            opacity: 0.9;
+            animation: fall 2.5s linear forwards;
+        }
+        @keyframes fall {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+
+.btn-1:hover{
+    background-color: rgb(0, 0, 0);
+    color: white;
+    border: 2px black;
+}
+
+p {
+    color: black;
+}
+
+
+
