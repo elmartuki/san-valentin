@@ -3,110 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Ti 💖</title>
+    <title>Carta Romántica</title>
+    <link rel="stylesheet" href="css.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
+        .hidden { display: none; }
+        .falling {
+            position: fixed;
+            top: 0;
+            font-size: 2rem;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to { transform: translateY(100vh); opacity: 0; }
+        }
+        .fade-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .fade-in.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .card {
+            background: red;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             text-align: center;
-            font-family: Arial, sans-serif;
-            background-color: #fdfd96;
-            color: white;
+            position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            padding: 20px;
         }
-        img {
-            width: 90%;
-            max-width: 300px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        button {
-            padding: 10px 15px;
-            font-size: 18px;
-            border: none;
-            background: crimson;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-            margin: 10px;
-        }
-        .hidden {
-            display: none;
-        }
-        .falling {
+        .card::before, .card::after {
+            content: '❤️';
             position: absolute;
-            font-size: 30px;
-            top: -50px;
-            opacity: 0.9;
-            animation: fall 2.5s linear forwards;
+            font-size: 2rem;
+            animation: float 3s infinite alternate ease-in-out;
         }
-        @keyframes fall {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(100vh); opacity: 0; }
+        .card::before {
+            top: -10px;
+            left: 10px;
         }
-        .message {
-            font-size: 18px;
-            margin-bottom: 20px;
-            color: black;
+        .card::after {
+            bottom: -10px;
+            right: 10px;
         }
-        .love-container {
-            text-align: center;
-            margin-top: 20px;
+        @keyframes float {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
         }
-        .love-container img {
-            max-width: 250px;
+        .heart {
+            font-size: 4rem;
+            animation: pulse 1.5s infinite;
         }
-        .love-message {
-            font-size: 20px;
-            margin-top: 10px;
-            color: pink;
-        }
-
-        .p{
-            color: black !important;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
-<body>
-
-    <div id="paso1">
-        <img src="funny-dog-bright-beautiful-red-260nw-215714149.png" alt="Imagen especial">
-        <p class="message">Hice esta pagina solamente para decirte que te amo con todo mi corazon <3</p>
-        <button onclick="showStep2()">Siguiente</button>
+<body class="flex items-center justify-center min-h-screen bg-red-500">
+    <div id="paso1" class="text-center fade-in show">
+        <div class="card">
+            <div class="heart">💌</div>
+            <button onclick="showStep2()" class="text-white text-6xl mt-4">Ábreme</button>
+        </div>
     </div>
 
-    <div id="paso2" class="hidden">
-        <p class="message">Aceptarias estar conmigo en las buenas y en las malas hasta que la muerte nos separe?</p>
-        <button onclick="showLove()">Sipi 💕</button>
-        <button>No</button>
+    <div id="paso2" class="hidden text-center bg-white p-10 rounded-lg shadow-lg fade-in">
+        <img src="perritos-lindos-pomerania-perro-pequines-raza-mixta-sentado-abrazando-almohada-forma-corazon-rojo-aislado-fondo-verde-dia-san-valentin_34266-1393.avif" alt="Perritos abrazados" class="w-64 mx-auto">
+        <p class="message text-lg">¿Queres pasar el 14 de febrero conmigo?.</p>
+        <button onclick="showLove()" class="bg-green-500 text-white px-4 py-2 rounded-lg mt-4">Sipi 💕</button>
+        <button class="bg-gray-500 text-white px-4 py-2 rounded-lg mt-4">No</button>
     </div>
 
-    <div id="love-message" class="hidden love-container">
-        <img src="Perritos Disfrazados.jpg" alt="Perritos abrazados">
-        <p class="love-message">❤️Feliz 19 meses juntitos❤️</p>
-        <br>
-        <p style="color: black; font-size: 12px;">Perdón por decírtelo tan tarde, sé que estamos pasando por momentos difíciles, pero no importa lo complicado que sea, siempre voy a estar aquí esperándote porque realmente te amo muchito. es mas ultimamente te extraño, y quiero pedirte disculpas por dar una salida facil que es que terminemos, que es lo que nunca quiero que pase, solo estoy nervioso y tengo miedo de perderte, disculpame.</p>
+    <div id="love-message" class="hidden text-center bg-white p-10 rounded-lg shadow-lg fade-in">
+        <img src="cat-heart-set-hugging-couple-600nw-2110352201.webp" alt="Perritos abrazados" class="w-64 mx-auto">
+        <p class="love-message text-xl mt-4">te amo muchitoooooo mividitaaaaaaaaaaaaaaaa </p>
+        <p class="text-gray-700 mt-2 text-sm">Anda bajando porque te estoy esperando abajo jsjs.</p>
     </div>
 
     <script>
         function showStep2() {
-            document.getElementById("paso1").classList.add("hidden");
-            document.getElementById("paso2").classList.remove("hidden");
+            document.getElementById("paso1").classList.remove("show");
+            setTimeout(() => {
+                document.getElementById("paso1").classList.add("hidden");
+                document.getElementById("paso2").classList.remove("hidden");
+                document.getElementById("paso2").classList.add("show");
+            }, 500);
         }
 
         function showLove() {
-            document.getElementById("paso2").classList.add("hidden");
-            document.getElementById("love-message").classList.remove("hidden");
-
-            // Animación de corazones y estrellas
-            for (let i = 0; i < 10; i++) {
-                createFallingElement('❤️');
-                createFallingElement('✨');
-            }
+            document.getElementById("paso2").classList.remove("show");
+            setTimeout(() => {
+                document.getElementById("paso2").classList.add("hidden");
+                document.getElementById("love-message").classList.remove("hidden");
+                document.getElementById("love-message").classList.add("show");
+                for (let i = 0; i < 10; i++) {
+                    createFallingElement('❤️');
+                    createFallingElement('✨');
+                }
+            }, 500);
         }
 
         function createFallingElement(symbol) {
@@ -122,6 +125,11 @@
             }, 3000);
         }
     </script>
-
 </body>
 </html>
+
+
+
+
+
+
